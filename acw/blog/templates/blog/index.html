@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %} 
+{% block title %} ALPHA CREATIVE WORKS {%endblock %}
+{% block body %}
+<div class=" acw3-container acw3-center">This is extended index body</div>
+{% for article in articles %}
+<div class=" acw3-container acw3-max-width-840 acw3-margin-top">
+  <a href="{% url 'article' article.pk %}" class=" acw3-text-none"
+    ><h3>{{ article.get_title }}</h3></a
+  >
+  <p>{{ article.get_preview | truncatechars_html:230 }}</p>
+  <div class=" acw3-bar">
+    <small  class=" acw3-right">
+      {{ article.date_created  | date:'Y.m.d' }} | {{ article.hit_count }} views
+    </small>
+  </div>
+  <hr />
+</div>
+{% endfor %}
+<div class=" acw3-container"></div>
+{% endblock %}
