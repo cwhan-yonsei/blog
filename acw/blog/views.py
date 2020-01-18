@@ -22,6 +22,9 @@ def model_test(request):
     }
     return render(request, 'blog/model-test.html', context)
 
+def comming_soon(request, **kwargs):
+    return render(request, 'blog/working.html')
+
 
 def article_list(request, tag):
     if tag == '0':

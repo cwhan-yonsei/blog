@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %} {% block title %} ALPHA CREATIVE WORKS - WorkList
+{% endblock %} {% block body %}
+<div class=" acw3-container acw3-max-width-840 acw3-margin-top">
+  {% if tag == '0'%}
+  <div class=" acw3-container acw3-center">
+    <h1>All Works</h1>
+  </div>
+
+  {% else %}
+  <div class=" acw3-container acw3-center">
+    <a href="{% url 'article_list' tag %}" class=" acw3-text-none acw3-text-a">
+      <h1>&nbsp;#{{ tag }}&nbsp;</h1>
+    </a>
+  </div>
+  {% endif %}
+  <div class=" acw3-container acw3-row-padding">
+    {% for work in works %}
+    <div class=" acw3-col l3 m4">
+      <img src="" alt="" />
+      <div>
+        <span>
+          <a href="">{{title}}</a>
+          <small class=" acw3-right">
+            {{ article.date_created | date:'Y.m.d' }} | {{ article.hit_count }}
+            views
+          </small>
+        </span>
+        <span>
+          <a href="">{{author}}</a>
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

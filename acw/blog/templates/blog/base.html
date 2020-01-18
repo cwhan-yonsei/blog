@@ -59,8 +59,8 @@
            <i class="fas fa-bars acw3-large"></i>&nbsp;&nbsp;
       </div>
 
-      <div class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20">&nbsp;&nbsp;About&nbsp;&nbsp;</div>
-      <div class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20">&nbsp;&nbsp;Works&nbsp;&nbsp;</div>
+      <a href="{% url 'about' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;About&nbsp;&nbsp;</a>
+      <a href="{% url 'work_list' '0' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;Works&nbsp;&nbsp;</a>
       <a href="{% url 'article_list' '0' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;Articles&nbsp;&nbsp;</a>
       
         </div>
@@ -70,14 +70,14 @@
     <!-- Footer common -->
     <div class=" acw3-container acw3-30 acw3-text-90 acw3-padding-24 acw3-margin-top">
       <div class=" acw3-row acw3-center acw3-padding-24">
-        <a href="#" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Articles&nbsp;&nbsp;&nbsp;</a>
-        <a href="#" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Works&nbsp;&nbsp;&nbsp;</a>
-        <a href="#" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;</a>
+        <a href="{% url 'article_list' '0' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Articles&nbsp;&nbsp;&nbsp;</a>
+        <a href="{% url 'work_list' '0' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Works&nbsp;&nbsp;&nbsp;</a>
+        <a href="{% url 'about' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;</a>
       </div>
       <div class=" acw3-container add-row acw3-padding-24">
         <div class=" acw3-half">ALPHA<br />CREATIVE<br />WORKS</a></div>
         <div class=" acw3-half">
-        <p class=" acw3-text-70">Since Jan 7, 2020 <br>Designed by Ahn, Chan-Woo <br>Powered by W3.CSS</p> </div>
+        <small class=" acw3-text-70">Since Jan 7, 2020 <br>Designed by Ahn, Chan-Woo <br>Powered by W3.CSS</small> </div>
       </div>
     </div>
   </body>

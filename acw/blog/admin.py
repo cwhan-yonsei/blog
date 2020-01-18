@@ -4,4 +4,4 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Article, MarkdownxModelAdmin)
-admin.site.register(ArticleHitCount)
+admin.site.register(Work, MarkdownxModelAdmin)
