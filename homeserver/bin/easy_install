@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/chanwooahn/Google Drive/Projects/Web/home-page-project-2/homeserver/bin/python" "$0" "$@"
-' '''
+#!/home/cwahn/home-server-2/homeserver/bin/python3.7
 # -*- coding: utf-8 -*-
 import re
 import sys

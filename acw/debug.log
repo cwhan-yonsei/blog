@@ -1,0 +1,685 @@
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /favicon.ico
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /blog
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /blog
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'blog'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /blog
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /favicon.ico
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.009) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/core/handlers/base.py", line 100, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/urls/resolvers.py", line 575, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'model_test/' [name='model_test']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern ''>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article_list/<slug:tag>' [name='article_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'article/<int:pk>' [name='article']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'work_list/<slug:tag>' [name='work_list']>], [<URLResolver <module 'blog.urls' from './blog/urls.py'> (None:None) ''>, <URLPattern 'about/' [name='about']>], [<URLPattern '^media/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 828, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 836, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 842, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/django/template/base.py", line 849, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'markdownx.urls' from '/home/cwahn/home-server-2/homeserver/lib/python3.7/site-packages/markdownx/urls.py'> (None:None) 'markdownx/'>
+Not Found: /favicon.ico
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 5 AND "blog_article"."publish" = 1) LIMIT 21; args=(5, True)
+(0.002) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.002) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 5); args=('blog', 'article', 5)
+(0.002) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 5 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(5, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.025) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 5, '2020-01-19'); args=['192.168.0.1', 5, '2020-01-19']
+(0.015) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title 5
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', "date_created" = '2020-01-15 14:03:01.238948', "publish" = 1, "hit_count" = 4 WHERE "blog_article"."id" = 5; args=(1, '# This is a title 5\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\n![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', '2020-01-15 14:03:01.238948', True, 4, 5)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.004) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.002) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 6 AND "blog_article"."publish" = 1) LIMIT 21; args=(6, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 6); args=('blog', 'article', 6)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 6 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(6, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.028) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 6, '2020-01-19'); args=['192.168.0.1', 6, '2020-01-19']
+(0.018) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title 6
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', "date_created" = '2020-01-15 14:03:17.866064', "publish" = 1, "hit_count" = 2 WHERE "blog_article"."id" = 6; args=(1, '# This is a title 6\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\n![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', '2020-01-15 14:03:17.866064', True, 2, 6)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 12 AND "blog_article"."publish" = 1) LIMIT 21; args=(12, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 12); args=('blog', 'article', 12)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 12 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(12, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.018) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 12, '2020-01-19'); args=['192.168.0.1', 12, '2020-01-19']
+(0.018) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title 12
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', "date_created" = '2020-01-15 14:04:25.269123', "publish" = 1, "hit_count" = 1 WHERE "blog_article"."id" = 12; args=(1, '# This is a title 12\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\n![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', '2020-01-15 14:04:25.269123', True, 1, 12)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article') LIMIT 21; args=('blog', 'article')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" INNER JOIN "taggit_taggeditem" ON ("blog_article"."id" = "taggit_taggeditem"."object_id" AND ("taggit_taggeditem"."content_type_id" = 7)) INNER JOIN "taggit_tag" ON ("taggit_taggeditem"."tag_id" = "taggit_tag"."id") WHERE ("blog_article"."publish" = 1 AND "taggit_tag"."name" IN ('tag_2')); args=(7, True, 'tag_2')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 4 AND "blog_article"."publish" = 1) LIMIT 21; args=(4, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 4); args=('blog', 'article', 4)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 4 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(4, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.016) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 4, '2020-01-19'); args=['192.168.0.1', 4, '2020-01-19']
+(0.016) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title of article 4
+## heading1
+this is a # of heading.  
+
+![](/media/markdownx/2020/01/04/f234e830-0656-45f1-88f3-4345b83c3cdc.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.
+
+Generated 5 paragraphs, 485 words', "date_created" = '2020-01-11 16:25:04', "publish" = 1, "hit_count" = 3 WHERE "blog_article"."id" = 4; args=(1, '# This is a title of article 4\r\n## heading1\r\nthis is a # of heading.  \r\n\r\n![](/media/markdownx/2020/01/04/f234e830-0656-45f1-88f3-4345b83c3cdc.png)\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.\r\n\r\nGenerated 5 paragraphs, 485 words', '2020-01-11 16:25:04', True, 3, 4)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 6 AND "blog_article"."publish" = 1) LIMIT 21; args=(6, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 6); args=('blog', 'article', 6)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 6 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(6, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 10 AND "blog_article"."publish" = 1) LIMIT 21; args=(10, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 10); args=('blog', 'article', 10)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 10 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(10, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.016) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 10, '2020-01-19'); args=['192.168.0.1', 10, '2020-01-19']
+(0.019) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title 10
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', "date_created" = '2020-01-15 14:04:05.703062', "publish" = 1, "hit_count" = 1 WHERE "blog_article"."id" = 10; args=(1, '# This is a title 10\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\n![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', '2020-01-15 14:04:05.703062', True, 1, 10)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 7 AND "blog_article"."publish" = 1) LIMIT 21; args=(7, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 7); args=('blog', 'article', 7)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 7 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(7, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.090) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 7, '2020-01-19'); args=['192.168.0.1', 7, '2020-01-19']
+(0.021) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title 7
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', "date_created" = '2020-01-15 14:03:29.107348', "publish" = 1, "hit_count" = 2 WHERE "blog_article"."id" = 7; args=(1, '# This is a title 7\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\n![](/media/markdownx/2020/01/15/654b61ab-6f36-40d6-bcd3-b3a0bc56d441.png)\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.', '2020-01-15 14:03:29.107348', True, 2, 7)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.003) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'cwahn' LIMIT 21; args=('cwahn',)
+(0.002) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv' LIMIT 1; args=('bd1os6ztzs6c38e8b5yz1j0pqoe1xalv',)
+(0.000) BEGIN; args=None
+(0.004) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv', 'ZWI4ODQ3MTQzYjUyYjRiNTliMDk5ZGZjMjcxZWY0Nzk3YTk1MTczZjp7fQ==', '2020-02-02 11:49:31.423968'; args=('bd1os6ztzs6c38e8b5yz1j0pqoe1xalv', 'ZWI4ODQ3MTQzYjUyYjRiNTliMDk5ZGZjMjcxZWY0Nzk3YTk1MTczZjp7fQ==', '2020-02-02 11:49:31.423968')
+(0.017) UPDATE "auth_user" SET "last_login" = '2020-01-19 11:49:31.460421' WHERE "auth_user"."id" = 1; args=('2020-01-19 11:49:31.460421', 1)
+(0.000) BEGIN; args=None
+(0.001) UPDATE "django_session" SET "session_data" = 'N2NjOWRkZjFkZTgwNjhlZjc3M2ZkNzkzMDc2Mjk4NDIxMzc3OThlNDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjMDFhYmNjMTA3MDVkNjJmNzljZGQwMGE1YzI4ZDViODIyMTI2MjA1In0=', "expire_date" = '2020-02-02 11:49:31.490081' WHERE "django_session"."session_key" = 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv'; args=('N2NjOWRkZjFkZTgwNjhlZjc3M2ZkNzkzMDc2Mjk4NDIxMzc3OThlNDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjMDFhYmNjMTA3MDVkNjJmNzljZGQwMGE1YzI4ZDViODIyMTI2MjA1In0=', '2020-02-02 11:49:31.490081', 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv')
+(0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2020-01-19 11:49:31.605916' AND "django_session"."session_key" = 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv') LIMIT 21; args=('2020-01-19 11:49:31.605916', 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv')
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.005) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+(0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2020-01-19 11:50:25.486429' AND "django_session"."session_key" = 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv') LIMIT 21; args=('2020-01-19 11:50:25.486429', 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv')
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2020-01-19 11:50:25.528958' AND "django_session"."session_key" = 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv') LIMIT 21; args=('2020-01-19 11:50:25.528958', 'bd1os6ztzs6c38e8b5yz1j0pqoe1xalv')
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.002) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article"; args=()
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 1 AND "blog_article"."publish" = 1) LIMIT 21; args=(1, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 1); args=('blog', 'article', 1)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 1 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(1, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 2 AND "blog_article"."publish" = 1) LIMIT 21; args=(2, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 2); args=('blog', 'article', 2)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 2 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(2, '2020-01-19', '2020-01-19', '192.168.0.1')
+(0.019) INSERT INTO "blog_articlehitcount" ("ip", "article_id", "date") VALUES ('192.168.0.1', 2, '2020-01-19'); args=['192.168.0.1', 2, '2020-01-19']
+(0.018) UPDATE "blog_article" SET "author_id" = 1, "content" = '# This is a title of article 2
+## heading1
+this is a # of heading.  
+
+![](/media/markdownx/2020/01/04/f234e830-0656-45f1-88f3-4345b83c3cdc.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.
+
+Donec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.
+
+Cras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.
+
+Duis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.
+
+Generated 5 paragraphs, 485 words', "date_created" = '2020-01-05 05:38:42', "publish" = 1, "hit_count" = 5 WHERE "blog_article"."id" = 2; args=(1, '# This is a title of article 2\r\n## heading1\r\nthis is a # of heading.  \r\n\r\n![](/media/markdownx/2020/01/04/f234e830-0656-45f1-88f3-4345b83c3cdc.png)\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis volutpat nibh eget euismod. Vivamus et libero nec elit lobortis vulputate eu et sapien. Ut dignissim ornare libero, vehicula dictum risus tincidunt ac. Maecenas convallis pulvinar est nec egestas. Maecenas a elit et ex consectetur efficitur at et metus. Donec scelerisque odio et auctor ullamcorper. Fusce lacinia, lectus id ullamcorper bibendum, nulla nunc eleifend est, eget sodales lacus quam a arcu. Proin maximus tristique suscipit. Cras cursus felis vel est congue, sed sodales leo dignissim. Donec suscipit felis eu mattis pharetra.\r\n\r\nDonec et rutrum magna. Mauris sagittis eros non leo fermentum, eu volutpat quam venenatis. Nullam mollis mattis magna, at suscipit mauris tincidunt id. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce commodo lobortis felis id eleifend. Cras et lectus non turpis consectetur convallis at sit amet sapien. Cras vel mi elementum, molestie arcu in, dignissim lorem. Praesent non placerat lectus. Duis eget enim sit amet nulla lacinia dapibus quis a ipsum. Proin faucibus et neque ut eleifend. Pellentesque congue a eros nec convallis. Morbi pretium, purus ut imperdiet pretium, nisi augue tincidunt turpis, ut dapibus elit erat nec erat. Fusce pulvinar risus ut accumsan sollicitudin. Quisque tincidunt porttitor hendrerit. Nam vitae velit nisl.\r\n\r\nOrci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc hendrerit eleifend libero, quis pharetra elit posuere porta. Sed est dui, mollis a dolor eget, porta vehicula velit. Integer vitae sem ac leo porttitor sollicitudin maximus non elit. Suspendisse vulputate, urna eget consectetur auctor, magna sem sagittis ligula, a aliquet dui nisl a erat. Aenean vitae lorem porttitor, consequat mi vitae, varius neque. Sed nec dui urna. Quisque sollicitudin purus ac ipsum imperdiet pellentesque. Nam quis massa posuere, imperdiet lacus id, aliquam nisi. Vivamus sit amet mauris vitae ipsum egestas semper sit amet eget libero. Fusce ante sem, tempor non sollicitudin sit amet, varius non ante.\r\n\r\nCras vel nunc arcu. Cras enim ex, viverra ut ante quis, elementum facilisis arcu. Integer hendrerit quis nibh nec pharetra. Integer id urna mauris. Vivamus commodo ut sapien nec blandit. Phasellus gravida felis sit amet sem tempus placerat. Nulla faucibus nulla augue, id ornare ipsum ultrices id. Nunc in lacus ac nisi dictum pellentesque eget nec metus. Nunc pharetra elementum eleifend. In rutrum dui eu quam laoreet bibendum. Vivamus et augue eu urna semper tincidunt non at mi. Nullam tempus tincidunt pulvinar.\r\n\r\nDuis non cursus mauris, id lacinia nibh. Sed a egestas ligula, eu vestibulum enim. Ut a mi sit amet massa tempus dapibus quis sed purus. Quisque a vulputate purus. Mauris non pretium neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim leo, pretium id libero ut, ullamcorper vestibulum nisl. Nam fermentum felis at sagittis scelerisque. Aliquam tempus condimentum hendrerit. Maecenas dapibus faucibus metus id tincidunt. Donec sollicitudin ullamcorper justo, at venenatis nisl sodales a. Aenean a tempus enim.\r\n\r\nGenerated 5 paragraphs, 485 words', '2020-01-05 05:38:42', True, 5, 2)
+(0.002) SELECT "blog_article"."id", "blog_article"."author_id", "blog_article"."content", "blog_article"."date_created", "blog_article"."publish", "blog_article"."hit_count" FROM "blog_article" WHERE ("blog_article"."id" = 2 AND "blog_article"."publish" = 1) LIMIT 21; args=(2, True)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1 LIMIT 21; args=(1,)
+(0.001) SELECT DISTINCT "taggit_tag"."id", "taggit_tag"."name", "taggit_tag"."slug" FROM "taggit_tag" INNER JOIN "taggit_taggeditem" ON ("taggit_tag"."id" = "taggit_taggeditem"."tag_id") INNER JOIN "django_content_type" ON ("taggit_taggeditem"."content_type_id" = "django_content_type"."id") WHERE ("django_content_type"."app_label" = 'blog' AND "django_content_type"."model" = 'article' AND "taggit_taggeditem"."object_id" = 2); args=('blog', 'article', 2)
+(0.001) SELECT COUNT(*) AS "__count" FROM "blog_articlehitcount" WHERE ("blog_articlehitcount"."article_id" = 2 AND "blog_articlehitcount"."date" >= '2020-01-19' AND "blog_articlehitcount"."date" <= '2020-01-19' AND "blog_articlehitcount"."ip" = '192.168.0.1'); args=(2, '2020-01-19', '2020-01-19', '192.168.0.1')
