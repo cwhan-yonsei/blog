@@ -1,9 +1,31 @@
+@font-face {
+  font-family: 'NBG';
+  font-style: 100;
+  src: url('../fonts/NanumBarunGothic.woff');
+ }
+@font-face {
+  font-family: 'NBGB';
+  font-style: 200;
+  src: url('../fonts/NanumBarunGothicBold.woff');
+ }
+@font-face {
+  font-family: 'NBGL';
+  font-style: 300;
+  src: url('../fonts/NanumBarunGothicLight.woff');
+ } 
+@font-face {
+  font-family: 'NBGUL';
+  font-style: 400;
+  src: url('../fonts/NanumBarunGothicUltraLight.woff');
+ }
+
 body,
 html {
   height: 100%;
   line-height: 1.8;
   padding: 0;
   margin: 0;
+  font-family: "NBG";
 }
 
 header {
@@ -19,16 +41,47 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: "Raleway", sans-serif;
+h6,
+p {
+  font-family: "NBG";
 }
 
 h2, h3 {
   font-weight: bold;
 }
 
-p {
-  color: #333333;
+a {
+  cursor: pointer;
+}
+
+#content {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+#content p {
+  line-height: 1.8125;
+  font-size: 16.8px;
+  margin-block-start: 30.45px;
+  margin-block-end: 30.45px;
+}
+
+#content a {
+  line-height: 1.8125;
+  font-size: 17px;
+}
+
+#content  h1 {
+  text-align: center;
+}
+
+#content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  max-width: 100%;
 }
 
 .acw3-full-img-header {
@@ -59,10 +112,14 @@ p {
   width: 100%;
 }
 
-.acw3-max-width-920 {
-  max-width: 920px;
-  margin: auto;
+.acw3-width-50 {
+  width: 50%;
 }
+
+.acw3-max-width-840 {
+  max-width: 840px;
+  margin: auto;
+} 
 
 .acw3-max-width-1200 {
   max-width: 1200px;
@@ -85,8 +142,12 @@ p {
   text-decoration: none;
 }
 
-.acw-min-height-100 {
+.acw3-min-height-100 {
   min-height: 100vh;
+}
+
+.acw3-logo {
+  line-height: 1.95;
 }
 
 .acw3-text-black {color:#000000 !important;}
