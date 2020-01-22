@@ -32,18 +32,16 @@ header {
   line-height: 1.8;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  color: #333333;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p {
+p, 
+li {
   font-family: "NBG";
+  color: #333333;
 }
 
 h2, h3 {
@@ -61,14 +59,12 @@ a {
 
 #content p {
   line-height: 1.8125;
-  font-size: 16.8px;
-  margin-block-start: 30.45px;
-  margin-block-end: 30.45px;
+  margin-block-start: 30px;
+  margin-block-end: 30px;
 }
 
-#content a {
+#content a, li {
   line-height: 1.8125;
-  font-size: 17px;
 }
 
 #content  h1 {
@@ -119,7 +115,7 @@ a {
 .acw3-max-width-840 {
   max-width: 840px;
   margin: auto;
-} 
+}
 
 .acw3-max-width-1200 {
   max-width: 1200px;
