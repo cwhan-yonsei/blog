@@ -4,13 +4,13 @@
 <div class=" acw3-container acw3-max-width-840 acw3-margin-top">
 {% if tag == '0'%}
 <div class=" acw3-container acw3-center">
-    <h1>All articles</h1>
+    <h2>All articles</h2>
 </div>
 
 {% else %}
 <div class=" acw3-container acw3-center">
     <a href="{% url 'article_list' tag %}" class=" acw3-text-none acw3-text-a">
-    <h1>&nbsp;#{{ tag }}&nbsp;</h1>
+    <h2>&nbsp;#{{ tag }}&nbsp;</h2>
     </a>
 </div>
 {% endif %}
