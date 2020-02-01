@@ -49,6 +49,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.get_title()
+    
+    class Meta:
+        ordering = ['-date_created']
 
 
 class ArticleHitCount(models.Model):
