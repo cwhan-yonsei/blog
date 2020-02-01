@@ -10,7 +10,10 @@
 
     <link rel="stylesheet" href="{% static 'blog/axw3.css' %}" />
     <link rel="stylesheet" href="{% static 'blog/acw3_pro.css' %}" />
-    <script src="https://kit.fontawesome.com/3c26dff78b.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3c26dff78b.js"
+      crossorigin="anonymous"
+    ></script>
 
     <link
       rel="stylesheet"
@@ -33,11 +36,10 @@
       src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
       integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
       crossorigin="anonymous"
-      onload="renderMathInElement(document.body);"
     ></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.getElementsByClassName("markdownx")[0], {
+        renderMathInElement(document.getElementById('content'), {
           delimiters: [
             { left: "$$", right: "$$", display: true },
             { left: "\\[", right: "\\]", display: true },
@@ -47,38 +49,118 @@
         });
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.getElementsByClassName('article_preview'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: false },
+            { left: "\\[", right: "\\]", display: false },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
   </head>
+
   <body>
+    <!-- Horizontal Sidebar -->
+    <nav
+      id="side_bar"
+      class=" acw3-bar-block acw3-sidebar acw3-hide-medium acw3-hide-large acw3-animate-right acw3-card"
+      style="display:none;right:0"
+    >
+      <a
+        href="javascript:void(0)"
+        onclick="close_sidebar()"
+        class=" acw3-bar-item acw3-padding-24 acw3-text-20 acw3-text-none acw3-center"
+        >Close X</a
+      >
+      <a
+      href="{% url 'article_list' '0' %}"
+      class=" acw3-bar-item acw3-padding-24 acw3-text-20 acw3-text-none acw3-center"
+      >Articles</a
+    >
+      <a
+        href="{% url 'work_list' '0' %}"
+        class=" acw3-bar-item acw3-padding-24 acw3-text-20 acw3-text-none acw3-center"
+        >Works</a
+      >
+      <a
+      href="{% url 'about' %}"
+      class=" acw3-bar-item acw3-padding-24 acw3-text-20 acw3-text-none acw3-center"
+      >About</a
+    >
+    </nav>
     <!-- Nav bar  -->
     <nav class=" acw3-container acw3-padding-32 ">
-        <div class=" acw3-bar acw3-max-width-1200">
-            <a href="" class=" acw3-text-none acw3-wide acw3-left acw3-text-2 acw3-logo">
-              ALPHA<br />CREATIVE<br />WORKS
-            </a>
-      <div class=" acw3-padding-16 acw3-right acw3-hide-medium acw3-hide-large acw3-text-20">
-           <i class="fas fa-bars acw3-large"></i>&nbsp;&nbsp;
+      <div class=" acw3-bar acw3-max-width-1200">
+        <a
+          href="{% url 'index' %}"
+          class=" acw3-text-none acw3-wide acw3-left acw3-text-2 acw3-logo"
+        >
+          ALPHA<br />CREATIVE<br />WORKS
+        </a>
+        <a
+          href="javascript:void(0)"
+          onclick="open_sidebar()"
+          class=" acw3-hide-medium acw3-hide-large acw3-padding-24 acw3-right acw3-text-20 acw3-text-none"
+          ><i class="fas fa-bars acw3-large"></i>&nbsp;&nbsp;</a
+        >
+        <a
+          href="{% url 'about' %}"
+          class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none"
+          >&nbsp;&nbsp;About&nbsp;&nbsp;</a
+        >
+        <a
+          href="{% url 'work_list' '0' %}"
+          class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none"
+          >&nbsp;&nbsp;Works&nbsp;&nbsp;</a
+        >
+        <a
+          href="{% url 'article_list' '0' %}"
+          class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none"
+          >&nbsp;&nbsp;Articles&nbsp;&nbsp;</a
+        >
       </div>
-
-      <a href="{% url 'about' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;About&nbsp;&nbsp;</a>
-      <a href="{% url 'work_list' '0' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;Works&nbsp;&nbsp;</a>
-      <a href="{% url 'article_list' '0' %}" class=" acw3-hide-small acw3-padding-24 acw3-right acw3-text-20 acw3-text-none">&nbsp;&nbsp;Articles&nbsp;&nbsp;</a>
-      
-        </div>
-      
     </nav>
+
     {% block body %} {% endblock %}
     <!-- Footer common -->
-    <div class=" acw3-container acw3-30 acw3-text-90 acw3-padding-24 acw3-margin-top">
-      <div class=" acw3-row acw3-center acw3-padding-24">
-        <a href="{% url 'article_list' '0' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Articles&nbsp;&nbsp;&nbsp;</a>
-        <a href="{% url 'work_list' '0' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;Works&nbsp;&nbsp;&nbsp;</a>
-        <a href="{% url 'about' %}" class=" acw3-text-none">&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;</a>
+    <div class=" acw3-30 acw3-text-90 acw3-margin-top">
+      <div class=" acw3-container acw3-row acw3-center acw3-padding-24">
+        <a href="{% url 'article_list' '0' %}" class=" acw3-text-none"
+          >&nbsp;&nbsp;&nbsp;&nbsp;Articles&nbsp;&nbsp;&nbsp;&nbsp;</a
+        >
+        <a href="{% url 'work_list' '0' %}" class=" acw3-text-none"
+          >&nbsp;&nbsp;&nbsp;&nbsp;Works&nbsp;&nbsp;&nbsp;&nbsp;</a
+        >
+        <a href="{% url 'about' %}" class=" acw3-text-none"
+          >&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;</a
+        >
       </div>
-      <div class=" acw3-container add-row acw3-padding-24">
-        <div class=" acw3-half">ALPHA<br />CREATIVE<br />WORKS</a></div>
-        <div class=" acw3-half">
-        <small class=" acw3-text-70">Since Jan 7, 2020 <br>Designed by Ahn, Chan-Woo <br>Powered by W3.CSS</small> </div>
+      <div class="acw3-row">
+        <div
+          class=" acw3-half acw3-container acw3-padding-24 acw3-wide acw3-logo"
+        >
+          ALPHA<br />CREATIVE<br />WORKS<br />
+        </div>
+        <div class=" acw3-half acw3-container acw3-padding-24">
+          <small class=" acw3-text-70"
+            >Since Jan 7, 2020 <br />Designed by Ahn, Chan-Woo <br />Powered by
+            W3.CSS</small
+          >
+        </div>
       </div>
     </div>
+    <script>
+      var sidebar = document.getElementById("side_bar");
+      function open_sidebar() {
+        sidebar.style.display = "block";
+      }
+      function close_sidebar() {
+        sidebar.style.display = "none";
+      }
+    </script>
   </body>
 </html>
