@@ -1,4 +1,4 @@
-#!/home/cwahn/home-server-2/homeserver/bin/python3.7
+#!/home/cwahn/home-server-2/homeserver/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
